@@ -8,7 +8,7 @@ const forecast = require('./utils/forecast')
 // console.log(path.join(__dirname,'../public'))
 
 const app = express();
-const path = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
 
 // Defines path for Express config
@@ -33,21 +33,9 @@ app.get('',(req,res)=>{
     })
 })
 
-app.get('/about',(req,res)=>{
-    res.render('about', {
-        title: 'about me',
-        name: 'dhaval'
-    })
-})
 
-// res.render() is used to send directory (for Ex. here we are sending templates directory's (about.hbs, help.hbs etc..))
-app.get('/help',(req,res)=>{
-    res.render('help', {
-        msg: 'this is a message ',
-        title: 'help',
-        name: 'dhaval   '
-    })
-})
+
+
 
 // res.send() is used to send string,html,object,etc.. directly
 app.get('/weather',(req, res)=>{
@@ -84,14 +72,7 @@ app.get('/weather',(req, res)=>{
     
 })
 
-app.get('/help/*',(req,res)=>{
-    console.log(req.query)
-    res.render('404',{
-        title: 404,
-        name: "dhaval",
-        errorMSG: 'Help page not found'
-    })
-})
+
 
 app.get('*',(req, res)=>{
     res.render('404',{
@@ -105,7 +86,7 @@ app.get('*',(req, res)=>{
 // app.com/help
 // app.com/about
 
-app.listen(path, ()=>{
-    console.log('Serever is up on port '+ path)
+app.listen(port, ()=>{
+    console.log('Serever is up on port '+ port)
 })
   
